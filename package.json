@@ -1,0 +1,35 @@
+{
+  "name": "animen",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "cf:build": "npx @cloudflare/next-on-pages",
+    "cf:deploy": "npx wrangler pages deploy .vercel/output/static",
+    "cf:preview": "npx wrangler pages dev .vercel/output/static"
+  },
+  "dependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
+    "@supabase/ssr": "^0.12.5",
+    "@supabase/supabase-js": "^2.112.4",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.37.0",
+    "next": "^15.5.2",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.6",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^15.5.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

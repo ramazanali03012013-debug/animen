@@ -1,0 +1,17 @@
+name = "animen"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://animen.pages.dev"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+[env.production.vars]
+NEXT_PUBLIC_SUPABASE_URL = "https://YOUR-PROJECT.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "YOUR-ANON-KEY"
+NEXT_PUBLIC_TURNSTILE_SITE_KEY = "YOUR-TURNSTILE-SITE-KEY"
