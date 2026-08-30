@@ -15,6 +15,7 @@ export function Header() {
           <Link href="/manga" className="hover:text-animen-red transition">Manga</Link>
           <Link href="/anime?sort=airing" className="hover:text-animen-red transition">Yeni Çıkanlar</Link>
           <Link href="/manga?sort=updated" className="hover:text-animen-red transition">Popüler Manga</Link>
+          <Link href="/profil" className="hover:text-animen-red transition">Profil</Link>
         </nav>
         <div className="flex-1 flex justify-end">
           <SearchBar />

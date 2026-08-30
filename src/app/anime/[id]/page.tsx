@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { FavoriteButton } from "@/components/FavoriteButton";
 import { getAnime, getAnimeEpisodes } from "@/lib/jikan";
 
 export default async function AnimeDetailPage({
@@ -66,6 +67,9 @@ export default async function AnimeDetailPage({
                   ▶ İzlemeye Başla
                 </Link>
               )}
+              <div className="mt-3">
+                <FavoriteButton kind="anime" refId={id} title={anime.title} image={anime.image} />
+              </div>
             </div>
           </div>
         </div>

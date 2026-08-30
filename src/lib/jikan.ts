@@ -8,15 +8,30 @@ import type {
 
 const BASE = "https://api.jikan.moe/v4";
 
-async function jikan<T>(path: string): Promise<T | null> {
+function sleep(ms: number) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+async function jikan<T>(path: string, attempt = 0): Promise<T | null> {
   try {
     const res = await fetch(`${BASE}${path}`, {
       next: { revalidate: 60 * 60 },
       headers: { Accept: "application/json" },
     });
+    if (res.status === 429 || res.status === 503 || res.status === 504) {
+      if (attempt < 3) {
+        await sleep(500 * 2 ** attempt);
+        return jikan<T>(path, attempt + 1);
+      }
+      return null;
+    }
     if (!res.ok) return null;
     return (await res.json()) as T;
   } catch {
+    if (attempt < 3) {
+      await sleep(400 * 2 ** attempt);
+      return jikan<T>(path, attempt + 1);
+    }
     return null;
   }
 }

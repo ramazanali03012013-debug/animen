@@ -1,6 +1,6 @@
 import { MediaCard } from "@/components/MediaCard";
 import { getAnimeList } from "@/lib/jikan";
-import { getPopularManga, searchManga } from "@/lib/sources/manga/registry";
+import { searchManga } from "@/lib/sources/manga/registry";
 
 export default async function SearchPage({
   searchParams,

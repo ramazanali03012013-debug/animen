@@ -24,7 +24,7 @@ export default async function HomePage() {
   return (
     <div className="max-w-[1400px] mx-auto px-4 pt-6">
       {hero && (
-        <section className="relative rounded-xl overflow-hidden mb-8 min-h-[420px] flex items-end">
+        <section className="relative rounded-xl overflow-hidden mb-8 min-h-[420px] flex items-end fade-in">
           <Image
             src={hero.image}
             alt={hero.title}

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { FavoriteButton } from "@/components/FavoriteButton";
+import { MangaSourceSelect } from "@/components/MangaSourceSelect";
 import { getChapters, getMangaDetail, getMangaSourceDefs } from "@/lib/sources/manga/registry";
 
 export default async function MangaDetailPage({
@@ -39,19 +41,7 @@ export default async function MangaDetailPage({
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-1">
             <h1 className="text-3xl font-extrabold text-white">{manga.title}</h1>
-            <select
-              className="bg-animen-dark border border-animen-gray rounded px-2 py-1 text-sm"
-              defaultValue={source}
-              onChange={(e) => {
-                const u = new URLSearchParams(sp as Record<string, string>);
-                u.set("source", e.target.value);
-                window.location.href = `/manga/${id}?${u.toString()}`;
-              }}
-            >
-              {sourceDefs.map((s) => (
-                <option key={s.id} value={s.id}>{s.name}</option>
-              ))}
-            </select>
+            <MangaSourceSelect sources={sourceDefs} current={source} mangaId={id} />
           </div>
           <div className="flex flex-wrap gap-2 mt-3">
             {manga.genres?.map((g) => (
@@ -74,6 +64,9 @@ export default async function MangaDetailPage({
               ▶ Okumaya Başla
             </Link>
           )}
+          <div className="mt-3">
+            <FavoriteButton kind="manga" refId={id} title={manga.title} image={manga.image} />
+          </div>
         </div>
       </div>
 

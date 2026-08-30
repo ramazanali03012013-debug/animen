@@ -11,7 +11,7 @@ interface MediaCardProps {
 
 export function MediaCard({ title, image, href, subtitle, badge }: MediaCardProps) {
   return (
-    <Link href={href} className="group block">
+    <Link href={href} className="group block fade-in hover-lift">
       <div className="relative aspect-[2/3] rounded-md overflow-hidden bg-animen-dark hover-scale">
         {image ? (
           <Image

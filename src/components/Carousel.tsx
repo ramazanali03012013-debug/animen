@@ -19,7 +19,7 @@ export function Carousel({ title, items }: CarouselProps) {
   if (!items.length) return null;
 
   return (
-    <section className="mt-10">
+    <section className="mt-10 fade-in">
       <div className="flex items-center justify-between px-1 mb-3">
         <h2 className="text-xl font-bold text-white">{title}</h2>
         <div className="flex gap-2">

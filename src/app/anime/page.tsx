@@ -33,7 +33,9 @@ export default async function AnimeListPage({
       <FilterBar kind="anime" current={sp} />
 
       {items.length === 0 ? (
-        <p className="text-animen-light/60 py-20 text-center">Sonuç bulunamadı.</p>
+        <p className="text-animen-light/60 py-20 text-center">
+          Sonuç bulunamadı. (Veri kaynağı Jikan geçici erişilemezse bir süre sonra tekrar dene.)
+        </p>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {items.map((a) => (
