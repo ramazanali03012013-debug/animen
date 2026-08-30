@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Carousel } from "@/components/Carousel";
-import { getSeasonalAnime, getTopAnime, getTopManga } from "@/lib/jikan";
+import { getSeasonalAnime, getTopAnime } from "@/lib/jikan";
+import { getPopularManga } from "@/lib/sources/manga/registry";
 
 export default async function HomePage() {
   const [popular, seasonal, topManga] = await Promise.all([
     getTopAnime("bypopularity", 14),
     getSeasonalAnime(14),
-    getTopManga(14),
+    getPopularManga(1),
   ]);
 
   const hero = popular[0];

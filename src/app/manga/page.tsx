@@ -1,8 +1,7 @@
 import Link from "next/link";
 
-import { FilterBar } from "@/components/FilterBar";
 import { MediaCard } from "@/components/MediaCard";
-import { getMangaList } from "@/lib/jikan";
+import { getPopularManga, searchManga } from "@/lib/sources/manga/registry";
 
 export default async function MangaListPage({
   searchParams,
@@ -11,23 +10,20 @@ export default async function MangaListPage({
 }) {
   const sp = await searchParams;
   const page = Number(sp.page ?? 1);
-  const { items, lastPage } = await getMangaList({
-    q: sp.q,
-    page,
-    status: sp.status,
-    order_by: sp.order_by ?? "popularity",
-    sort: sp.sort ?? "desc",
-    genres: sp.genres,
-  });
+  const { items, total } = sp.q
+    ? await searchManga(sp.q, page)
+    : await getPopularManga(page);
+
+  const lastPage = Math.max(1, Math.ceil(total / 24));
 
   return (
     <div className="max-w-[1400px] mx-auto px-4 py-8">
       <h1 className="text-3xl font-extrabold mb-1">
         <span className="text-animen-red">Manga</span> Kataloğu
       </h1>
-      <p className="text-animen-light/60 mb-6 text-sm">Binlerce manga arasında keşfet</p>
-
-      <FilterBar kind="manga" current={sp} />
+      <p className="text-animen-light/60 mb-6 text-sm">
+        {sp.q ? `"${sp.q}" için Türkçe sonuçlar` : "Türkçe manga arasında keşfet (MangaDex TR)"}
+      </p>
 
       {items.length === 0 ? (
         <p className="text-animen-light/60 py-20 text-center">Sonuç bulunamadı.</p>

@@ -13,6 +13,13 @@ export async function searchManga(
   return mangadex.searchManga(query, page);
 }
 
+export async function getPopularManga(
+  page = 1,
+  _sourceId = "mangadex"
+): Promise<{ items: MangaSummary[]; total: number }> {
+  return mangadex.searchManga("", page);
+}
+
 export async function getMangaDetail(
   id: string,
   _sourceId = "mangadex"

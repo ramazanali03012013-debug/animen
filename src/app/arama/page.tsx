@@ -1,5 +1,6 @@
 import { MediaCard } from "@/components/MediaCard";
-import { getAnimeList, getMangaList } from "@/lib/jikan";
+import { getAnimeList } from "@/lib/jikan";
+import { getPopularManga, searchManga } from "@/lib/sources/manga/registry";
 
 export default async function SearchPage({
   searchParams,
@@ -19,7 +20,7 @@ export default async function SearchPage({
 
   const [anime, manga] = await Promise.all([
     getAnimeList({ q, limit: 24 }),
-    getMangaList({ q, limit: 24 }),
+    searchManga(q, 1),
   ]);
 
   return (
