@@ -1,4 +1,4 @@
-import { getAnime, getAnimeEpisodes } from "@/lib/jikan";
+import { getAnime, getAnimeEpisodes } from "@/lib/animeCatalog";
 import { getAnimeEmbed, getAnimeSourceDefs } from "@/lib/sources/anime/registry";
 
 import { WatchClient } from "@/components/WatchClient";

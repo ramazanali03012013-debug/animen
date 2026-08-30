@@ -15,7 +15,13 @@ async function md<T>(path: string): Promise<T | null> {
 
 function coverUrl(mangaId: string, fileName?: string) {
   if (!fileName) return "";
-  return `https://uploads.mangadex.org/covers/${mangaId}/${fileName}`;
+  return `https://wsrv.nl/?url=${encodeURIComponent(
+    `https://uploads.mangadex.org/covers/${mangaId}/${fileName}`
+  )}&output=webp`;
+}
+
+function imgProxy(url: string) {
+  return `https://wsrv.nl/?url=${encodeURIComponent(url)}&output=webp`;
 }
 
 interface MdManga {
@@ -106,6 +112,6 @@ export async function getPages(chapterId: string) {
   if (!server) return [];
   return server.chapter.data.map((file, index) => ({
     index,
-    url: `${server.baseUrl}/data/${server.chapter.hash}/${file}`,
+    url: imgProxy(`${server.baseUrl}/data/${server.chapter.hash}/${file}`),
   }));
 }

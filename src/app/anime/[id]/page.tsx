@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { FavoriteButton } from "@/components/FavoriteButton";
-import { getAnime, getAnimeEpisodes } from "@/lib/jikan";
+import { getAnime, getAnimeEpisodes } from "@/lib/animeCatalog";
 
 export default async function AnimeDetailPage({
   params,

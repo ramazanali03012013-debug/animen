@@ -37,7 +37,7 @@ export function MangaReader({ pages, title }: MangaReaderProps) {
               </div>
             ) : (
               <Image
-                src={`/api/img?url=${encodeURIComponent(p.url)}`}
+                src={p.url}
                 alt={`Sayfa ${p.index + 1}`}
                 width={800}
                 height={1200}

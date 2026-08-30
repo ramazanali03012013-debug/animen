@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { FilterBar } from "@/components/FilterBar";
 import { MediaCard } from "@/components/MediaCard";
-import { getAnimeList } from "@/lib/jikan";
+import { getAnimeList } from "@/lib/animeCatalog";
 
 export default async function AnimeListPage({
   searchParams,
@@ -16,8 +16,7 @@ export default async function AnimeListPage({
     page,
     type: sp.type,
     status: sp.status,
-    order_by: sp.order_by ?? "popularity",
-    sort: sp.sort ?? "desc",
+    sort: sp.order_by ?? sp.sort ?? "popularity-desc",
     genres: sp.genres,
   });
 
@@ -34,7 +33,7 @@ export default async function AnimeListPage({
 
       {items.length === 0 ? (
         <p className="text-animen-light/60 py-20 text-center">
-          Sonuç bulunamadı. (Veri kaynağı Jikan geçici erişilemezse bir süre sonra tekrar dene.)
+          Sonuç bulunamadı. (Farklı bir arama veya filtre dene.)
         </p>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
