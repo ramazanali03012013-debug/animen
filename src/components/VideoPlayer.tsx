@@ -13,10 +13,24 @@ export function VideoPlayer({ embedUrl }: VideoPlayerProps) {
     setError(false);
   }, [embedUrl]);
 
-  if (!embedUrl) {
+  const isPlaceholder =
+    embedUrl?.includes("ornek-embed.com") ||
+    embedUrl?.includes("ornek-api.com");
+
+  if (!embedUrl || isPlaceholder) {
     return (
-      <div className="aspect-video w-full flex items-center justify-center bg-animen-dark rounded-lg text-animen-light/60">
-        Bu bölüm için kaynak bulunamadı.
+      <div className="aspect-video w-full flex flex-col items-center justify-center gap-3 bg-animen-dark rounded-lg text-animen-light/60 p-6 text-center">
+        <p className="font-semibold text-white">İzleme kaynağı yapılandırılmadı</p>
+        <p className="text-sm">
+          Gerçek bir Türkçe kaynak eklemek için <code>.env.local</code> içindeki{" "}
+          <code>ANIME_SOURCES</code> değerini güncelle. Örnek:
+        </p>
+        <pre className="text-left text-xs bg-black/40 rounded p-3 overflow-x-auto">
+{`ANIME_SOURCES=[
+  {"id":"kaynak1","name":"Kaynağım",
+   "embed":"https://gercek-kaynak.com/embed/{id}"}
+]`}
+        </pre>
       </div>
     );
   }

@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.weserv.nl" },
       { protocol: "https", hostname: "wsrv.nl" },
       { protocol: "https", hostname: "*.wsrv.nl" },
+      { protocol: "https", hostname: "proxy.duckduckgo.com" },
       { protocol: "https", hostname: "s4.anilist.co" },
       { protocol: "https", hostname: "*.anilist.co" },
     ],

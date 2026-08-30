@@ -28,6 +28,8 @@ export const env = {
   turnstileSecret: process.env.TURNSTILE_SECRET_KEY ?? "",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   animeSources: parseAnimeSources(process.env.ANIME_SOURCES),
+  imageProxyBase:
+    process.env.IMAGE_PROXY_BASE ?? "https://proxy.duckduckgo.com/iu/?u=",
 };
 
 export const isProd = process.env.NODE_ENV === "production";

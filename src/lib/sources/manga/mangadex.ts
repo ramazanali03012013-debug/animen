@@ -1,3 +1,5 @@
+import { env } from "../../env";
+
 const BASE = "https://api.mangadex.org";
 
 async function md<T>(path: string): Promise<T | null> {
@@ -13,15 +15,13 @@ async function md<T>(path: string): Promise<T | null> {
   }
 }
 
-function coverUrl(mangaId: string, fileName?: string) {
-  if (!fileName) return "";
-  return `https://wsrv.nl/?url=${encodeURIComponent(
-    `https://uploads.mangadex.org/covers/${mangaId}/${fileName}`
-  )}&output=webp`;
+function imgProxy(url: string) {
+  return `${env.imageProxyBase}${encodeURIComponent(url)}`;
 }
 
-function imgProxy(url: string) {
-  return `https://wsrv.nl/?url=${encodeURIComponent(url)}&output=webp`;
+function coverUrl(mangaId: string, fileName?: string) {
+  if (!fileName) return "";
+  return imgProxy(`https://uploads.mangadex.org/covers/${mangaId}/${fileName}`);
 }
 
 interface MdManga {
