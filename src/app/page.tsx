@@ -60,7 +60,7 @@ export default async function HomePage() {
 
       <Carousel title="Popüler Anime" items={popular.map((a) => toCard(a, "anime"))} />
       <Carousel title="Yayınlanan Sezon" items={seasonal.map((a) => toCard(a, "anime"))} />
-      <Carousel title="Popüler Manga" items={topManga.map((m) => toCard(m, "manga"))} />
+      <Carousel title="Popüler Manga" items={topManga.items.map((m) => toCard(m, "manga"))} />
     </div>
   );
 }
